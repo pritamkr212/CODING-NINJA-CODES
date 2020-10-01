@@ -1,0 +1,33 @@
+import java.util.Scanner;
+public class Solution {
+    
+    public static void swapAlternate(int arr[]) {
+       // Scanner s=new Scanner(System.in);
+        int n=arr.length;
+        int j=0;
+        if(n%2==0)
+        {
+            j=n-1;
+            for(int i=0;i<n-1;i=i+2)
+            {
+                int temp=0;
+                temp=arr[i];
+                arr[i]=arr[i+1];
+                arr[i+1]=temp;
+            }
+        }
+        else
+        {
+            j=n-2;
+            for(int i=0;i<j;i=i+2)
+            {
+                  int temp=0;
+                temp=arr[i];
+                arr[i]=arr[i+1];
+                arr[i+1]=temp;
+            }
+            
+        }
+         
+    }
+}

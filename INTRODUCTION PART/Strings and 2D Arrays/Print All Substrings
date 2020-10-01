@@ -1,0 +1,16 @@
+
+public class Solution {
+
+	public static void printSubstrings(String str){
+        int size=str.length();
+        for(int j=0;j<size;j++)
+        {
+        for(int i=j ;i<size;i++)
+        {
+            System.out.println(str.substring(j,i+1));
+        }
+        }
+	}
+	
+
+}

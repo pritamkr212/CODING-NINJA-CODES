@@ -1,0 +1,20 @@
+import java.util.Scanner;
+public class Solution {
+	public static void printFahrenheitTable(int start, int end, int step) {
+		int c=0;
+	    int i=start;
+	    while(i<=end)
+	    {
+	        c=(5*(i-32))/9;
+	        System.out.println(i+" "+c);
+	        i=i+step;
+	    }return;
+	}	
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+		int start= s.nextInt();
+		int end=s.nextInt();
+		int step=s.nextInt();
+		printFahrenheitTable(start,end,step);
+	}
+}

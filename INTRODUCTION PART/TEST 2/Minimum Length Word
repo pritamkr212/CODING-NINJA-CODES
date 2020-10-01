@@ -1,0 +1,28 @@
+
+public class Solution {
+	
+	public static String minLengthWord(String input){
+		String[] words=input.split(" ");
+		int count=0;
+        String ans="";
+        int l=Integer.MAX_VALUE;
+        for(int i=0;i<words.length;i++)
+        {
+            String word=words[i];
+            count=word.length();
+             if(l>count)
+             {
+                 l=count;
+                 ans="";
+                 for(int j=0;j<word.length();j++)
+                 {
+                     ans=ans+word.charAt(j);
+                 }
+             }
+        }
+        
+        return ans;
+        
+
+	}
+}

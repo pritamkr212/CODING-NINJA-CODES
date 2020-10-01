@@ -1,0 +1,18 @@
+import java.util.*;
+public class Solution {
+	public static String reverseWordWise(String input) {
+        
+  
+        String array[] = input.split(" ");
+        String ans = "";
+        
+        // System.out.println(Arrays.toString(array));
+        
+        for(int i = array.length - 1 ; i >= 0 ; i--){
+            ans += array[i];
+            ans += " ";
+        }
+        
+        return ans;
+	}
+}

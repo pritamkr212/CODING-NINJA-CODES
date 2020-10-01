@@ -1,0 +1,38 @@
+import java.util.Scanner;
+public class Main {
+	
+	public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int n = s.nextInt();
+		boolean isDecreasing = true;
+		
+		if (n == 0) {
+			System.out.println(true);
+		}
+		int prev = s.nextInt();
+		
+		int count = 1;
+		while (count < n) {
+			int current = s.nextInt();
+			
+			if (current == prev) {
+				System.out.println(false);
+				return;
+			}
+			
+			if (isDecreasing) {
+				if (current > prev) {
+					isDecreasing = false;
+				}
+			} else {
+				if (current < prev) {
+					System.out.println(false);
+					return;
+				}
+			}
+			count = count + 1;
+			prev = current;
+		}
+		System.out.println(true);
+	}
+}

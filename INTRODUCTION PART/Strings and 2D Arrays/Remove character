@@ -1,0 +1,23 @@
+public class solution {
+
+	public static String removeAllOccurrencesOfChar(String input, char c) {
+	    String[] Words=input.split(" ");
+        String newstring="";
+         for(int i=0;i<Words.length;i++)
+         {
+             String newword="";
+             String word=Words[i];
+             for(int j=0;j<word.length();j++)
+             {
+                 if(word.charAt(j)!=c)
+                 {
+                     newword=newword+word.charAt(j);
+                 }
+             }
+             newstring=newstring+newword;
+         }
+        return newstring;
+
+	}
+
+}

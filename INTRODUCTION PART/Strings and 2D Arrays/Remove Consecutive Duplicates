@@ -1,0 +1,23 @@
+public class solution {
+
+	public static String removeConsecutiveDuplicates(String input) {
+        int k=input.length();
+        String ans="";
+        for(int i=0;i<k;i++)
+        {
+            if(i==0){
+                ans+=input.charAt(i);
+            }
+            else if(input.charAt(i-1)!=input.charAt(i))
+            {
+                ans+=input.charAt(i);
+            }
+            else{
+                continue;
+            }
+        }
+        return ans;
+        
+
+	}
+}

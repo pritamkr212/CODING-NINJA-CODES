@@ -1,0 +1,24 @@
+public class Solution {
+		public static void leaders(int input[]) {
+		int max = Integer.MIN_VALUE;
+		String str="";
+		for(int i=input.length-1;i>=0;i--) {
+			if(input[i]>=max) {
+				if(i == input.length-1) {
+					str =input[i]+str;
+					max=input[i];
+				}
+				else {
+					str =input[i]+","+str;
+					max=input[i];   		
+				}
+			}
+			
+		}
+		String arr[] = str.split(",");
+		for(int i=0;i<arr.length;i++) {
+			System.out.print(arr[i]+" ");
+		}
+	}
+	
+}

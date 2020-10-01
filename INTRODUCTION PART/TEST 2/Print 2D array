@@ -1,0 +1,17 @@
+public class solution {
+	public static void print2DArray(int input[][]) {
+        int k=input.length;
+        for(int i=0;i<input.length;i++)
+        {
+            while(k>0)
+            {
+                for(int j=0;j<input[0].length;j++)
+                {
+                    System.out.print(input[i][j]+" ");
+                }
+                 System.out.println();
+            k--; 
+            }   
+        }
+	}
+}

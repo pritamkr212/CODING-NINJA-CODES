@@ -1,0 +1,45 @@
+
+ public class Solution {
+    
+     public static void arrange(int[] arr, int n) {
+         int val=1;
+         int j=n/2;
+         int k=(n-1)/2;
+         int l=0;
+         if(n==0)
+         {
+             return;
+         }
+         if(n%2==0)
+         {
+             l=k;
+             for(int i=0;i<=l;i++)
+             {
+                 arr[i]=val;
+                 val=val+2;
+             }
+             val=n;
+             for(int i=l+1;i<=n-1;i++)
+            {
+                 arr[i]=val;
+                 val=val-2;
+             }
+         }
+         else
+         {           
+             l=j;
+             for(int i=0;i<=l;i++)
+             {
+                 arr[i]=val;
+                 val=val+2;
+             }
+             val=n-1;
+             for(int i=l+1;i<=n-1;i++)
+            {
+                 arr[i]=val;
+                 val=val-2;
+             }
+          
+         }
+     }
+ }

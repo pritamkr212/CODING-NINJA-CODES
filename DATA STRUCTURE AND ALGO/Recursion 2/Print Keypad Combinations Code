@@ -1,0 +1,105 @@
+Given an integer n, using phone keypad find out and print all the possible strings that can be made using digits of input n.
+Note : The order of strings are not important. Just print different strings in new lines.
+Input Format :
+
+Integer n
+
+Output Format :
+
+All possible strings in different lines
+
+Constraints :
+1 <= n <= 10^6
+Sample Input:
+
+23
+
+Sample Output:
+
+ad
+ae
+af
+bd
+be
+bf
+cd
+ce
+cf
+
+public class solution {
+
+	public static void printKeypad(int input){
+        
+		printKeypad(input,"");
+	}
+    public static void printKeypad(int input,String output)
+    {
+        if(input==0)
+        {
+            System.out.println(output);
+            return;
+        }
+        String str[] = helper(input%10);
+       	int len = str.length;
+   	   for(int i=0; i<len; i++) {
+        printKeypad(input/10,str[i]+output);
+        
+       }
+    }
+        public static String[] helper(int n)
+    {
+        if(n==0)
+        {
+            String s[]={};
+            return s;
+        }
+        if(n==1)
+        {
+            String s[]={};
+            return s;
+        }
+        if(n==2)
+        {
+            String s[]={"a","b","c"};
+            return s;
+        }
+        if(n==3)
+        {
+            String s[]={"d","e","f"};
+            return s;
+        }
+        if(n==4)
+        {
+            String s[]={"g","h","i"};
+            return s;
+        }
+        if(n==5)
+        {
+            String s[]={"j","k","l"};
+            return s;
+        }
+        if(n==6)
+        {
+            String s[]={"m","n","o"};
+            return s;
+        }
+        if(n==7)
+        {
+            String s[]={"p","q","r","s"};
+            return s;
+        }
+        if(n==8)
+        {
+            String s[]={"t","u","v"};
+            return s;
+        }
+        if(n==9)
+        {
+            String s[]={"w","x","y","z"};
+            return s;
+        }else{
+			 String s[]={};
+            return s;
+        }
+    }
+}

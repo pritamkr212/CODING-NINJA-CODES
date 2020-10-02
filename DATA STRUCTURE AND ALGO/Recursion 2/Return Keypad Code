@@ -1,0 +1,91 @@
+Given an integer n, using phone keypad find out all the possible strings that can be made using digits of input n.
+Return empty string for numbers 0 and 1.
+Note : 1. The order of strings are not important.
+2. Input and output has already been managed for you. You just have to populate the output array and return the count of elements populated in the output array.
+Input Format :
+
+Integer n
+
+Output Format :
+
+All possible strings in different lines
+
+Constraints :
+1 <= n <= 10^6
+Sample Input:
+
+23
+
+Sample Output:
+
+ad
+ae
+af
+bd
+be
+bf
+cd
+ce
+cf
+
+
+public class Solution {
+
+    public static void quickSort(int[] input) {
+        quickSort(input,0,input.length-1);
+    }
+
+    public static void quickSort(int[] input,int si,int ei)
+    {
+        if(si>=ei)
+        {
+            return;
+        }
+        int pvPos=partition(input,si,ei);
+        quickSort(input,si,pvPos-1);
+        quickSort(input,pvPos+1,ei);
+    }
+    public static int partition(int[] input,int si,int ei)
+    {
+        int pv=input[si];
+        int i=si;
+        int count=0;
+        while(i<=ei)
+        {
+            if(pv>input[i])
+            {
+                count++;
+            }
+            i++;
+        }
+        int pvPos=si+count;
+        int temp=input[si];
+        input[si]=input[pvPos];
+        input[pvPos]=temp;
+        int l=si;
+        int m=ei;
+        while(l<pvPos&&m>pvPos)
+        {
+            if(input[l]<pv)
+            {
+                l++;
+            }
+            else{
+                if(input[m]>=pv) // changed
+                {
+                    m--;
+                }
+                else
+                {
+                    int temp1=input[l];
+                    input[l]=input[m];
+                    input[m]=temp1; //changed
+                    l++; //added
+                    m--; //added
+                }
+            }
+
+        }
+        return pvPos;
+    }
+}

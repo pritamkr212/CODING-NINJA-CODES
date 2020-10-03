@@ -1,0 +1,55 @@
+Given a binary tree, print the zig zag order i.e print level 1 from left to right, level 2 from right to left and so on. This means odd levels should get printed from left to right and even level right to left.
+
+Input format :
+
+Elements in level order form (separated by space)
+
+(If any node does not have left or right child, take -1 in its place)
+
+Output Format :
+
+Elements are printed level wise, each level in new line (separated by space).
+Sample Input :
+
+5 6 10 2 3 -1 -1 -1 -1 -1 9 -1 -1
+
+Sample Output :
+
+5
+10 6
+2 3
+9
+
+import java.util.ArrayList;
+import java.util.Stack;
+public class Solution {
+public static void printZigZag(BinaryTreeNode<Integer> root) {
+       Stack<BinaryTreeNode<Integer>> normal = new Stack<>();
+        Stack<BinaryTreeNode<Integer>> reverse = new Stack<>();
+
+        normal.push(root);
+        BinaryTreeNode<Integer> node = null;
+        while(!normal.isEmpty() || !reverse.isEmpty()){
+            while(!normal.isEmpty()) {
+                node = normal.pop();
+                System.out.print(node.data + " ");
+                if(node.left!=null)
+                reverse.push(node.left);
+                if(node.right!=null)
+                reverse.push(node.right);
+            }
+            System.out.println();
+            while(!reverse.isEmpty()){
+                node = reverse.pop();
+                System.out.print(node.data + " ");
+                if(node.right!=null)
+                normal.push(node.right);
+                if(node.left!=null)
+                normal.push(node.left);
+            }
+            System.out.println();
+        }
+
+
+}
+}

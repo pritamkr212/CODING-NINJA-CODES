@@ -1,0 +1,67 @@
+Given a binary search tree and an integer S, find pair of nodes in the BST which sum to S. You can use extra space only O(log n).
+Assume BST contains all unique elements.
+Note: In a pair, print the smaller element first.
+
+Input format:
+
+Line 1: Elements in the level order form (separated by space)
+
+(If any node does not have left or right child, take -1 in its place)
+
+Line 2: S
+
+Output format: Each pair in a different line (pair elements separated by space)
+Sample Input :
+
+8 5 10 2 6 -1 -1 -1 -1 -1 7 -1 -1
+12
+
+Sample Output
+
+2 10
+5 7
+
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+public class Solution {
+	
+    public static void helper(BinaryTreeNode<Integer> root,ArrayList<Integer> list)
+    {
+        if(root==null)
+        {
+            return;
+        }
+        helper(root.left,list);
+        list.add(root.data);
+        helper(root.right,list);
+    }
+            
+    
+    public static void printNodesSumToS(BinaryTreeNode<Integer> root, int s) {
+        ArrayList<Integer> a2 = new ArrayList<>();
+        helper(root,a2);
+        Collections.sort(a2);
+        int i=0;
+        int j=a2.size()-1;
+        while(i<j)
+        {
+            
+        if(a2.get(i)+a2.get(j)==s)
+        {
+            System.out.println(a2.get(i)+" "+a2.get(j));
+            i++;
+            j--;
+        }
+        if(a2.get(i)+a2.get(j)>s)
+        {
+            j--;
+        }
+        if(a2.get(i)+a2.get(j)<s)
+        {
+            i++;
+        }
+        }
+	}
+}

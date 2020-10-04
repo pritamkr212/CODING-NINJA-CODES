@@ -1,0 +1,86 @@
+Given an integer array of size n. Sort this array (in decreasing order) using heap sort.
+Space complexity should be O(1).
+Input Format :
+
+Line 1 : Integer n, Array size
+Line 2 : Array elements, separated by space
+
+Output Format :
+
+Array elements after sorting
+
+Constraints :
+1 <= n <= 10^6
+Sample Input:
+
+6 
+2 6 8 5 4 3
+
+Sample Output:
+
+8 6 5 4 3 2
+
+public class Solution {
+
+    public static void insert(int[] input,int CI)
+    {
+		int parentIndex = (CI - 1) / 2;
+		while(CI > 0){
+			if(input[CI] < input[parentIndex]){
+				int temp = input[CI];
+                input[CI]=input[parentIndex];
+				input[parentIndex]=temp;
+				CI = parentIndex;
+				parentIndex = (CI - 1) / 2;
+			}else{
+				return;
+			}
+		}
+    }
+    
+	public static void inplaceHeapSort(int input[]) {
+        int i=0;
+        while(i<input.length){
+            insert(input,i);
+            i++;
+        }
+
+        int j=input.length-1;
+        while(j>0)
+        {
+            int tem=input[0];
+            input[0]=input[j];
+            input[j]=tem;
+            int index=0;
+            int minIndex=index;
+            int LCI=1;
+            int RCI=2;
+            while(LCI<j)
+            {
+                if(input[LCI]<input[minIndex])
+                {
+                    minIndex=LCI;
+                }
+                if(RCI<j&&input[RCI]<input[minIndex])
+                {
+                    minIndex=RCI;
+                }
+                if(index==minIndex)
+                {
+                    break;
+                }
+                else
+                {
+                    int temp1 = input[index];
+                    input[index]=input[minIndex];
+                    input[minIndex]=temp1;
+                    index=minIndex;
+                    LCI=2*index+1;
+                    RCI=2*index+2;
+                }
+            }
+            j--;
+        }
+		
+	}
+}

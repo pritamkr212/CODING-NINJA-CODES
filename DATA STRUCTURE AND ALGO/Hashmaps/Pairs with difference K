@@ -1,0 +1,100 @@
+You are given with an array of integers and an integer K. Write a program to find and print all pairs which have difference K.
+Take difference as absolute.
+Input Format :
+
+Line 1 : Integer n, Size of array
+Line 2 : Array elements (separated by space)
+Line 3 : K
+
+Output format :
+
+Print pairs in different lines (pair elements separated by space). In a pair, smaller element should be printed first.
+(Order of different pairs is not important)
+
+Constraints :
+
+0 <= n <= 10^4
+
+Sample Input 1 :
+
+4 
+5 1 2 4
+3
+
+Sample Output 1 :
+
+2 5
+1 4
+
+Sample Input 2 :
+
+4
+4 4 4 4 
+0
+
+Sample Output 2 :
+
+4 4
+4 4
+4 4
+4 4
+4 4
+4 4
+
+import java.util.*;
+public class Solution {
+
+	public static void findPairsDifferenceK(int[] input, int k){
+		HashMap<Integer,Integer> map=new HashMap<Integer,Integer>();
+        for(int i:input)
+        {
+            if(map.containsKey(i))
+            {
+                map.put(i,map.get(i)+1);
+            }
+            else
+            {
+                map.put(i,1);
+            }
+        }
+        for(int i=0;i<input.length;i++)
+        {
+            int key=input[i];
+            if(map.containsKey(key-k)&&map.get(key)!=0)
+            {
+                int times;
+                if(input[i]==input[i]+k)
+                {
+                    int occur=map.get(key);
+                    times=(occur*(occur-1))/2;
+                    while(times!=0)
+                    {
+                        System.out.println(key+" "+key);
+                        times--;
+                    }
+                }
+                else{
+                    
+                
+                times=map.get(key)*map.get((key-k));
+                while(times!=0)
+                {
+                    System.out.print(Math.min(key,(key-k))+" ");
+                    System.out.println(Math.max(key,(key-k)));
+                    times--;
+                }
+                }
+            }
+				int val = input[i];
+				for(int z=0;z<input.length;z++)
+				{
+					if(input[z]==val)
+					{
+						input[z]=Integer.MIN_VALUE;
+					}
+				}
+        }
+        
+        
+	}
+}

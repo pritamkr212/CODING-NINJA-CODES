@@ -1,0 +1,61 @@
+Given a Binary tree, find the largest BST subtree. That is, you need to find the BST with maximum height in the given binary tree.
+Return the height of largest BST.
+
+Input format :
+
+Line 1 : Elements in level order form (separated by space)
+
+(If any node does not have left or right child, take -1 in its place)
+Sample Input 1:
+
+5 10 6 2 3 -1 -1 -1 -1 -1 9 -1 -1
+
+Sample Output 1:
+
+2
+
+class value{
+        int min;
+        int max;
+        int h;
+        boolean isbst;
+    }
+public class Solution {
+    public static value largestBSTSubtree_help(BinaryTreeNode<Integer> root)
+    {
+        value v=new value();
+        if(root==null)
+        {
+            v.h=0;
+            v.min=Integer.MAX_VALUE;
+            v.max=Integer.MIN_VALUE;
+            v.isbst=true;;
+            return v;
+        }
+        value vleft=largestBSTSubtree_help(root.left);
+        value vright=largestBSTSubtree_help(root.right);
+        v.h=Math.max(vleft.h,vright.h);
+        v.min=Math.min(root.data,Math.min(vleft.min,vright.min));
+        v.max=Math.max(root.data,Math.max(vleft.max,vright.max));
+        if(vleft.isbst&&vright.isbst)
+        {
+            if(root.data>vleft.max&&root.data<vright.min)
+            {
+                v.isbst=true;
+                v.h++;
+            }
+            else
+            {
+                v.isbst=false;
+            }
+            return v;
+        }
+        v.isbst=false;
+        return v;
+    }
+    
+    public static int largestBSTSubtree(BinaryTreeNode<Integer> root) {
+        return largestBSTSubtree_help(root).h;
+	
+	}
+}

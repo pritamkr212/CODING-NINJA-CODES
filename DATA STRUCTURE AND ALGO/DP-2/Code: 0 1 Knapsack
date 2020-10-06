@@ -1,0 +1,45 @@
+A thief robbing a store and can carry a maximal weight of W into his knapsack. There are N items and ith item weigh wi and is value vi. What is the maximum value V, that thief can take ?
+Input Format :
+
+Line 1 : N i.e. number of items
+Line 2 : N Integers i.e. weights of items separated by space
+Line 3 : N Integers i.e. values of items separated by space
+Line 4 : Integer W i.e. maximum weight thief can carry
+
+Output Format :
+
+Line 1 : Maximum value V
+
+Constraints
+1 <= N <= 20
+1<= wi <= 100
+1 <= vi <= 100
+Sample Input 1 :
+
+4
+1 2 4 5
+5 4 8 6
+5
+
+Sample Output :
+
+13
+
+public class Solution {
+	public static int help(int[] weight,int value[],int index,int maxweight, int n){
+     if(maxweight==0||index>=n){
+        return 0;
+     }  
+        
+     if(weight[index]>maxweight){
+          return help(weight,value,1+index,maxweight,n);
+      }
+     int opt1 = value[index]+help(weight,value,index+1,maxweight-weight[index],n);
+     int opt2 = help(weight,value,index+1,maxweight,n);
+      return Math.max(opt1,opt2);  
+        
+    }	
+	public static int knapsack(int[] weight,int value[],int maxWeight, int n){
+         return help(weight,value,0,maxWeight,n);
+	}
+}
